@@ -8,32 +8,8 @@ cd hello-web-k8s
 ### 2) Создание HTML с Hello world
 nano app/hello.html
 
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Hello</title>
-</head>
-<body>
-  <h1>Hello world</h1>
-</body>
-</html>
-
 ### 3) Создание Dockerfile
 nano Dockerfile
-
-FROM python:3.14-alpine
-
-WORKDIR /app
-
-COPY app/ /app/
-
-RUN adduser -D -u 10001 appuser
-USER 10001
-
-EXPOSE 8000
-
-CMD ["python", "-m", "http.server", "8000"]
 
 ### 4) Сбор Image
 docker build -t simple-web:1.0.0 .
@@ -53,39 +29,6 @@ minikube start --driver=docker
 
 ### 8) Создание и установка Kubernetes Deployment manifest
 nano k8s/deployment.yaml
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: web
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: web
-  template:
-    metadata:
-      labels:
-        app: web
-    spec:
-      containers:
-        - name: web
-          image: alexkostyuk/simple-web:1.0.0
-          ports:
-            - containerPort: 8000
-          livenessProbe:
-            httpGet:
-              path: /hello.html
-              port: 8000
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /hello.html
-              port: 8000
-            initialDelaySeconds: 2
-            periodSeconds: 5
-
 kubectl apply -f k8s/deployment.yaml
 
 ### 9) Сохранение вывода kubectl describe deployment web
