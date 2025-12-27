@@ -1,0 +1,17 @@
+HTTP/1.0 200 OK
+Server: SimpleHTTP/0.6 Python/3.14.2
+Date: Fri, 26 Dec 2025 20:04:33 GMT
+Content-type: text/html
+Content-Length: 144
+Last-Modified: Fri, 26 Dec 2025 19:09:20 GMT
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Hello</title>
+</head>
+<body>
+  <h1>Hello world</h1>
+</body>
+</html>
