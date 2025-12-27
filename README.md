@@ -1,7 +1,7 @@
 # hello-web-k8s
 
 ### 1) Создание структуры проекта
-mkdir -p hello-web-k8s/app
+mkdir -p hello-web-k8s/app \n
 mkdir -p hello-web-k8s/k8s
 cd hello-web-k8s
 
