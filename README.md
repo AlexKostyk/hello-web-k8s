@@ -35,7 +35,7 @@ kubectl apply -f k8s/deployment.yaml
 kubectl describe deployment web | tee k8s/describe-deployment-web.txt
 
 ### 10) Доступ к приложению с помощью port-forward
-kubectl port-forward deployment/web 8080:8000
+kubectl port-forward deployment/web 8080:8000 | tee k8s/port-forward.txt
 
 Проверка доступа из другого терминала и сохранение в curl.txt: <br>
 curl -i http://127.0.0.1:8080/hello.html | tee k8s/curl.txt
